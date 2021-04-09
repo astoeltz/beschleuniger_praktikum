@@ -1,0 +1,632 @@
+! ===========================================================================
+! ELEMENT DEFINITIONS
+! ===========================================================================
+! Bending magnets
+! ---------------------------------------------------------------------------
+    VFINT = 0.75;
+    VMBK1 = 0.0027;
+    VMBK2 = -0.5;
+!
+    bend: SBEND, L:=2.164, ANGLE:=3.9270000000E-01, K1:=VMBK1, E1:=1.9635000000E-01, E2:=1.9635000000E-01, K2:=VMBK2, HGAP:=0.0205, FINT:=VFINT;
+!
+        Tbend.S1.01: bend;
+        Tbend.S1.02: bend;
+        Tbend.S1.03: bend;
+        Tbend.S1.04: bend;
+!
+        Tbend.S2.01: bend;
+        Tbend.S2.02: bend;
+        Tbend.S2.03: bend;
+        Tbend.S2.04: bend;
+!
+        Tbend.S3.01: bend;
+        Tbend.S3.02: bend;
+        Tbend.S3.03: bend;
+        Tbend.S3.04: bend;
+!
+        Tbend.S4.01: bend;
+        Tbend.S4.02: bend;
+        Tbend.S4.03: bend;
+        Tbend.S4.04: bend;
+!
+! ---------------------------------------------------------------------------
+! Higher order multipole corrections
+! ---------------------------------------------------------------------------
+    VMBBK1L  = 0.0;
+    VMBBK2L  = 0.0;
+    VMBBK3L  = 0.0;
+    VMBBK3L2 = 0.0;
+!
+    MULTMBB: MULTIPOLE, knl:={0,VMBBK1L,VMBBK2L,VMBBK3L};
+    MULTMBE: MULTIPOLE, knl:={0,VMBBK1L,VMBBK2L,VMBBK3L2};
+!
+        TMBB.S1.01: MULTMBB;
+        TMBE.S1.01: MULTMBE;
+        TMBB.S1.02: MULTMBB;
+        TMBE.S1.02: MULTMBE;
+        TMBB.S1.03: MULTMBB;
+        TMBE.S1.03: MULTMBE;
+        TMBB.S1.04: MULTMBB;
+        TMBE.S1.04: MULTMBE;
+!
+        TMBB.S2.01: MULTMBB;
+        TMBE.S2.01: MULTMBE;
+        TMBB.S2.02: MULTMBB;
+        TMBE.S2.02: MULTMBE;
+        TMBB.S2.03: MULTMBB;
+        TMBE.S2.03: MULTMBE;
+        TMBB.S2.04: MULTMBB;
+        TMBE.S2.04: MULTMBE;
+!
+        TMBB.S3.01: MULTMBB;
+        TMBE.S3.01: MULTMBE;
+        TMBB.S3.02: MULTMBB;
+        TMBE.S3.02: MULTMBE;
+        TMBB.S3.03: MULTMBB;
+        TMBE.S3.03: MULTMBE;
+        TMBB.S3.04: MULTMBB;
+        TMBE.S3.04: MULTMBE;
+!
+        TMBB.S4.01: MULTMBB;
+        TMBE.S4.01: MULTMBE;
+        TMBB.S4.02: MULTMBB;
+        TMBE.S4.02: MULTMBE;
+        TMBB.S4.03: MULTMBB;
+        TMBE.S4.03: MULTMBE;
+        TMBB.S4.04: MULTMBB;
+        TMBE.S4.04: MULTMBE;
+!
+! ---------------------------------------------------------------------------
+! Quadrupoles
+! ---------------------------------------------------------------------------
+    KQF1        = 2.1152;
+    KQD2        =-2.21;
+    KQF3        = 2.0782;
+    KQD4        =-1.9067;
+    KQF5        = 2.0488;
+!
+    KQF1.S1.01 := KQF1;
+    KQF1.S1.02 := KQF1;
+    KQF1.S2.01 := KQF1;
+    KQF1.S2.02 := KQF1;
+    KQF1.S3.01 := KQF1;
+    KQF1.S3.02 := KQF1;
+    KQF1.S4.01 := KQF1;
+    KQF1.S4.02 := KQF1;
+!
+    KQD2.S1.01 := KQD2;
+    KQD2.S1.02 := KQD2;
+    KQD2.S2.01 := KQD2;
+    KQD2.S2.02 := KQD2;
+    KQD2.S3.01 := KQD2;
+    KQD2.S3.02 := KQD2;
+    KQD2.S4.01 := KQD2;
+    KQD2.S4.02 := KQD2;
+!
+    KQF3.S1.01 := KQF3;
+    KQF3.S1.02 := KQF3;
+    KQF3.S2.01 := KQF3;
+    KQF3.S2.02 := KQF3;
+    KQF3.S3.01 := KQF3;
+    KQF3.S3.02 := KQF3;
+    KQF3.S4.01 := KQF3;
+    KQF3.S4.02 := KQF3;
+!
+    KQD4.S1.01 := KQD4;
+    KQD4.S1.02 := KQD4;
+    KQD4.S2.01 := KQD4;
+    KQD4.S2.02 := KQD4;
+    KQD4.S3.01 := KQD4;
+    KQD4.S3.02 := KQD4;
+    KQD4.S4.01 := KQD4;
+    KQD4.S4.02 := KQD4;
+!
+    KQF5.S1.01 := KQF5;
+    KQF5.S1.02 := KQF5;
+    KQF5.S2.01 := KQF5;
+    KQF5.S2.02 := KQF5;
+    KQF5.S3.01 := KQF5;
+    KQF5.S3.02 := KQF5;
+    KQF5.S4.01 := KQF5;
+    KQF5.S4.02 := KQF5;
+!
+    q1: QUADRUPOLE, L:=3.2000000000E-01, K1:=KQF1;
+        TQ1.S1.01: q1, K1:=KQF1.S1.01;
+        TQ1.S1.02: q1, K1:=KQF1.S1.02;
+        TQ1.S2.01: q1, K1:=KQF1.S2.01;
+        TQ1.S2.02: q1, K1:=KQF1.S2.02;
+        TQ1.S3.01: q1, K1:=KQF1.S3.01;
+        TQ1.S3.02: q1, K1:=KQF1.S3.02;
+        TQ1.S4.01: q1, K1:=KQF1.S4.01;
+        TQ1.S4.02: q1, K1:=KQF1.S4.02;
+!
+    q2: QUADRUPOLE, L:=3.2000000000E-01, K1:=KQD2;
+        TQ2.S1.01: q2, K1:=KQD2.S1.01;
+        TQ2.S1.02: q2, K1:=KQD2.S1.02;
+        TQ2.S2.01: q2, K1:=KQD2.S2.01;
+        TQ2.S2.02: q2, K1:=KQD2.S2.02;
+        TQ2.S3.01: q2, K1:=KQD2.S3.01;
+        TQ2.S3.02: q2, K1:=KQD2.S3.02;
+        TQ2.S4.01: q2, K1:=KQD2.S4.01;
+        TQ2.S4.02: q2, K1:=KQD2.S4.02;
+!
+    q3: QUADRUPOLE, L:=3.9000000000E-01, K1:=KQF3;
+        TQ3.S1.01: q3, K1:=KQF3.S1.01;
+        TQ3.S1.02: q3, K1:=KQF3.S1.02;
+        TQ3.S2.01: q3, K1:=KQF3.S2.01;
+        TQ3.S2.02: q3, K1:=KQF3.S2.02;
+        TQ3.S3.01: q3, K1:=KQF3.S3.01;
+        TQ3.S3.02: q3, K1:=KQF3.S3.02;
+        TQ3.S4.01: q3, K1:=KQF3.S4.01;
+        TQ3.S4.02: q3, K1:=KQF3.S4.02;
+!
+    q4:QUADRUPOLE, L:=3.2000000000E-01, K1:=KQD4;
+        TQ4.S1.01: q4, K1:=KQD4.S1.01;
+        TQ4.S1.02: q4, K1:=KQD4.S1.02;
+        TQ4.S2.01: q4, K1:=KQD4.S2.01;
+        TQ4.S2.02: q4, K1:=KQD4.S2.02;
+        TQ4.S3.01: q4, K1:=KQD4.S3.01;
+        TQ4.S3.02: q4, K1:=KQD4.S3.02;
+        TQ4.S4.01: q4, K1:=KQD4.S4.01;
+        TQ4.S4.02: q4, K1:=KQD4.S4.02;
+!
+    q5:QUADRUPOLE, L:=3.2000000000E-01, K1:=KQF5;
+        TQ5.S1.01: q5, K1:=KQF5.S1.01;
+        TQ5.S1.02: q5, K1:=KQF5.S1.02;
+        TQ5.S2.01: q5, K1:=KQF5.S2.01;
+        TQ5.S2.02: q5, K1:=KQF5.S2.02;
+        TQ5.S3.01: q5, K1:=KQF5.S3.01;
+        TQ5.S3.02: q5, K1:=KQF5.S3.02;
+        TQ5.S4.01: q5, K1:=KQF5.S4.01;
+        TQ5.S4.02: q5, K1:=KQF5.S4.02;
+!
+! ---------------------------------------------------------------------------
+! Sextupoles
+! ---------------------------------------------------------------------------
+!    K2SH = 63.56;
+    K2SH = 0;
+!   K2SV =-52.08;
+    K2SV =0;
+!
+    sv: SEXTUPOLE, L:=1.450000000E-01, K2:=K2SV;
+        TSV.S1.01: sv;
+        TSV.S1.02: sv;
+        TSV.S1.03: sv;
+        TSV.S1.04: sv;
+!
+        TSV.S2.01: sv;
+        TSV.S2.02: sv;
+        TSV.S2.03: sv;
+        TSV.S2.04: sv;
+!
+        TSV.S3.01: sv;
+        TSV.S3.02: sv;
+        TSV.S3.03: sv;
+        TSV.S3.04: sv;
+!
+        TSV.S4.01: sv;
+        TSV.S4.02: sv;
+        TSV.S4.03: sv;
+        TSV.S4.04: sv;
+!
+    sh: SEXTUPOLE, L:=1.450000000E-01, K2:=K2SH;
+        TSH.S1.01: sh;
+        TSH.S1.02: sh;
+!
+        TSH.S2.01: sh;
+        TSH.S2.02: sh;
+!
+        TSH.S3.01: sh;
+        TSH.S3.02: sh;
+!
+        TSH.S4.01: sh;
+        TSH.S4.02: sh;
+!
+! ---------------------------------------------------------------------------
+! Correctors
+! ---------------------------------------------------------------------------
+    THETA.MCH.S1.01 = 0.000;
+    THETA.MCH.S1.02 = 0.000;
+    THETA.MCH.S1.03 = 0.000;
+    THETA.MCH.S1.04 = 0.000;
+    THETA.MCH.S1.06 = 0.000;
+    THETA.MCH.S1.07 = 0.000;
+    THETA.MCH.S1.08 = 0.000;
+!
+    THETA.MCH.S2.01 = 0.000;
+    THETA.MCH.S2.02 = 0.000;
+    THETA.MCH.S2.03 = 0.000;
+    THETA.MCH.S2.04 = 0.000;
+    THETA.MCH.S2.06 = 0.000;
+    THETA.MCH.S2.07 = 0.000;
+    THETA.MCH.S2.08 = 0.000;
+!
+    THETA.MCH.S3.01 = 0.000;
+    THETA.MCH.S3.02 = 0.000;
+    THETA.MCH.S3.03 = 0.000;
+    THETA.MCH.S3.04 = 0.000;
+    THETA.MCH.S3.06 = 0.000;
+    THETA.MCH.S3.07 = 0.000;
+    THETA.MCH.S3.08 = 0.000;
+!
+    THETA.MCH.S4.01 = 0.000;
+    THETA.MCH.S4.02 = 0.000;
+    THETA.MCH.S4.03 = 0.000;
+    THETA.MCH.S4.04 = 0.000;
+    THETA.MCH.S4.06 = 0.000;
+    THETA.MCH.S4.07 = 0.000;
+    THETA.MCH.S4.08 = 0.000;
+!
+    TMCH.S1.01: HKICKER, L:=0.00, KICK:=THETA.MCH.S1.01;
+    TMCH.S1.02: HKICKER, L:=0.00, KICK:=THETA.MCH.S1.02;
+    TMCH.S1.03: HKICKER, L:=0.00, KICK:=THETA.MCH.S1.03;
+    TMCH.S1.04: HKICKER, L:=0.00, KICK:=THETA.MCH.S1.04;
+    TMCH.S1.06: HKICKER, L:=0.00, KICK:=THETA.MCH.S1.06;
+    TMCH.S1.07: HKICKER, L:=0.00, KICK:=THETA.MCH.S1.07;
+    TMCH.S1.08: HKICKER, L:=0.00, KICK:=THETA.MCH.S1.08;
+!
+    TMCH.S2.01: HKICKER, L:=0.00, KICK:=THETA.MCH.S2.01;
+    TMCH.S2.02: HKICKER, L:=0.00, KICK:=THETA.MCH.S2.02;
+    TMCH.S2.03: HKICKER, L:=0.00, KICK:=THETA.MCH.S2.03;
+    TMCH.S2.04: HKICKER, L:=0.00, KICK:=THETA.MCH.S2.04;
+    TMCH.S2.06: HKICKER, L:=0.00, KICK:=THETA.MCH.S2.06;
+    TMCH.S2.07: HKICKER, L:=0.00, KICK:=THETA.MCH.S2.07;
+    TMCH.S2.08: HKICKER, L:=0.00, KICK:=THETA.MCH.S2.08;
+!
+    TMCH.S3.01: HKICKER, L:=0.00, KICK:=THETA.MCH.S3.01;
+    TMCH.S3.02: HKICKER, L:=0.00, KICK:=THETA.MCH.S3.02;
+    TMCH.S3.03: HKICKER, L:=0.00, KICK:=THETA.MCH.S3.03;
+    TMCH.S3.04: HKICKER, L:=0.00, KICK:=THETA.MCH.S3.04;
+    TMCH.S3.06: HKICKER, L:=0.00, KICK:=THETA.MCH.S3.06;
+    TMCH.S3.07: HKICKER, L:=0.00, KICK:=THETA.MCH.S3.07;
+    TMCH.S3.08: HKICKER, L:=0.00, KICK:=THETA.MCH.S3.08;
+!
+    TMCH.S4.01: HKICKER, L:=0.00, KICK:=THETA.MCH.S4.01;
+    TMCH.S4.02: HKICKER, L:=0.00, KICK:=THETA.MCH.S4.02;
+    TMCH.S4.03: HKICKER, L:=0.00, KICK:=THETA.MCH.S4.03;
+    TMCH.S4.04: HKICKER, L:=0.00, KICK:=THETA.MCH.S4.04;
+    TMCH.S4.06: HKICKER, L:=0.00, KICK:=THETA.MCH.S4.06;
+    TMCH.S4.07: HKICKER, L:=0.00, KICK:=THETA.MCH.S4.07;
+    TMCH.S4.08: HKICKER, L:=0.00, KICK:=THETA.MCH.S4.08;
+!
+    THETA.MCV.S1.01 = 0.000;
+    THETA.MCV.S1.02 = 0.000;
+    THETA.MCV.S1.03 = 0.000;
+    THETA.MCV.S1.04 = 0.000;
+!
+    THETA.MCV.S2.01 = 0.000;
+    THETA.MCV.S2.02 = 0.000;
+    THETA.MCV.S2.03 = 0.000;
+    THETA.MCV.S2.04 = 0.000;
+!
+    THETA.MCV.S3.01 = 0.000;
+    THETA.MCV.S3.02 = 0.000;
+    THETA.MCV.S3.03 = 0.000;
+    THETA.MCV.S3.04 = 0.000;
+!
+    THETA.MCV.S4.01 = 0.000;
+    THETA.MCV.S4.02 = 0.000;
+    THETA.MCV.S4.03 = 0.000;
+    THETA.MCV.S4.04 = 0.000;
+!
+    TMCV.S1.01: VKICKER, L:=0.00, KICK:=THETA.MCV.S1.01;
+    TMCV.S1.02: VKICKER, L:=0.00, KICK:=THETA.MCV.S1.02;
+    TMCV.S1.03: VKICKER, L:=0.00, KICK:=THETA.MCV.S1.03;
+    TMCV.S1.04: VKICKER, L:=0.00, KICK:=THETA.MCV.S1.04;
+!
+    TMCV.S2.01: VKICKER, L:=0.00, KICK:=THETA.MCV.S2.01;
+    TMCV.S2.02: VKICKER, L:=0.00, KICK:=THETA.MCV.S2.02;
+    TMCV.S2.03: VKICKER, L:=0.00, KICK:=THETA.MCV.S2.03;
+    TMCV.S2.04: VKICKER, L:=0.00, KICK:=THETA.MCV.S2.04;
+!
+    TMCV.S3.01: VKICKER, L:=0.00, KICK:=THETA.MCV.S3.01;
+    TMCV.S3.02: VKICKER, L:=0.00, KICK:=THETA.MCV.S3.02;
+    TMCV.S3.03: VKICKER, L:=0.00, KICK:=THETA.MCV.S3.03;
+    TMCV.S3.04: VKICKER, L:=0.00, KICK:=THETA.MCV.S3.04;
+!
+    TMCV.S4.01: VKICKER, L:=0.00, KICK:=THETA.MCV.S4.01;
+    TMCV.S4.02: VKICKER, L:=0.00, KICK:=THETA.MCV.S4.02;
+    TMCV.S4.03: VKICKER, L:=0.00, KICK:=THETA.MCV.S4.03;
+    TMCV.S4.04: VKICKER, L:=0.00, KICK:=THETA.MCV.S4.04;
+!
+! ---------------------------------------------------------------------------
+! RF Cavities
+! ---------------------------------------------------------------------------
+    VRFGLOB = 0.0;              ! Old value: 350.0E-3*0.865;
+    LGRF    = 0.5;              ! No energy gain in RF cavities!
+!
+    CRF: RFCAVITY, L:=0.48, BETRF:=0.0, HARMON:=184, VOLT:=VRFGLOB, LAG:=LGRF;
+        TCRF.S2.01: CRF;
+        TCRF.S2.02: CRF;
+        TCRF.S4.01: CRF;
+        TCRF.S4.02: CRF;
+!
+! ---------------------------------------------------------------------------
+! Beam Position Monitors
+! ---------------------------------------------------------------------------
+    TBPM.S1.01: MONITOR, L:=0.0;
+    TBPM.S1.02: MONITOR, L:=0.0;
+    TBPM.S1.03: MONITOR, L:=0.0;
+    TBPM.S1.04: MONITOR, L:=0.0;
+    TBPM.S1.05: MONITOR, L:=0.0;
+    TBPM.S1.06: MONITOR, L:=0.0;
+    TBPM.S1.07: MONITOR, L:=0.0;
+    TBPM.S1.08: MONITOR, L:=0.0;
+!
+    TBPM.S2.01: MONITOR, L:=0.0;
+    TBPM.S2.02: MONITOR, L:=0.0;
+    TBPM.S2.03: MONITOR, L:=0.0;
+    TBPM.S2.04: MONITOR, L:=0.0;
+    TBPM.S2.05: MONITOR, L:=0.0;
+    TBPM.S2.06: MONITOR, L:=0.0;
+    TBPM.S2.07: MONITOR, L:=0.0;
+    TBPM.S2.08: MONITOR, L:=0.0;
+!
+    TBPM.S3.01: MONITOR, L:=0.0;
+    TBPM.S3.02: MONITOR, L:=0.0;
+    TBPM.S3.03: MONITOR, L:=0.0;
+    TBPM.S3.04: MONITOR, L:=0.0;
+    TBPM.S3.05: MONITOR, L:=0.0;
+    TBPM.S3.06: MONITOR, L:=0.0;
+    TBPM.S3.07: MONITOR, L:=0.0;
+    TBPM.S3.08: MONITOR, L:=0.0;
+!
+    TBPM.S4.01: MONITOR, L:=0.0;
+    TBPM.S4.02: MONITOR, L:=0.0;
+    TBPM.S4.03: MONITOR, L:=0.0;
+    TBPM.S4.04: MONITOR, L:=0.0;
+    TBPM.S4.05: MONITOR, L:=0.0;
+    TBPM.S4.06: MONITOR, L:=0.0;
+    TBPM.S4.07: MONITOR, L:=0.0;
+    TBPM.S4.08: MONITOR, L:=0.0;
+!
+    TTM.S4.01:  MONITOR, L:=0.0;
+!
+! ---------------------------------------------------------------------------
+! Markers
+! ---------------------------------------------------------------------------
+    TSS: MARKER;
+!
+! ===========================================================================
+!
+!
+!
+! ===========================================================================
+! KARA SEQUENCE DEFINITION
+! ===========================================================================
+!
+    REAL CONST KARALENGTH = 110.400160;
+!
+KARA: sequence, refer=centre, REFPOS = STRT_KARA, L = KARALENGTH;
+!
+    STRT_KARA:  MARKER,      AT=0.000;
+    S1.LSS.M:   TSS,         AT=0.000;
+!
+    MCH.S1.01:  TMCH.S1.01,  AT=1.708000;
+    kick.S1.01: MARKER,      AT=2.536000;
+    Q1.S1.01:   TQ1.S1.01,   AT=2.961500;
+    MCV.S1.01:  TMCV.S1.01,  AT=3.299900;
+    BPM.S1.01:  TBPM.S1.01,  AT=3.484000;
+    Q2.S1.01:   TQ2.S1.01,   AT=3.731500;
+  MBB.S1.01:    TMBB.S1.01,  AT=4.099005;
+  bend.S1.01:   Tbend.S1.01, AT=5.190505;
+  MBE.S1.01:    TMBE.S1.01,  AT=6.282005;
+    BPM.S1.02:  TBPM.S1.02,  AT=6.389010;
+    SV.S1.01:   TSV.S1.01,   AT=6.522010;
+    MCH.S1.02:  TMCH.S1.02,  AT=6.742020;
+    Q3.S1.01:   TQ3.S1.01,   AT=7.742010;
+    SH.S1.01:   TSH.S1.01,   AT=8.107010;
+    MCH.S1.03:  TMCH.S1.03,  AT=8.542010;
+    BPM.S1.03:  TBPM.S1.03,  AT=8.777010;
+    SV.S1.02:   TSV.S1.02,   AT=8.922010;
+  MBB.S1.02:    TMBB.S1.02,  AT=9.202015;
+  bend.S1.02:   Tbend.S1.02, AT=10.293515;
+  MBE.S1.02:    TMBE.S1.02,  AT=11.385015;
+    BPM.S1.04:  TBPM.S1.04,  AT=11.492025;
+    Q4.S1.01:   TQ4.S1.01,   AT=11.752520;
+    MCV.S1.02:  TMCV.S1.02,  AT=12.065020;
+    Q5.S1.01:   TQ5.S1.01,   AT=12.522520;
+    MCH.S1.04:  TMCH.S1.04,  AT=13.330020;
+!
+    S1.SSS.M:   TSS,         AT=13.800020;
+!
+    SEPT.S1.01: MARKER,      AT=14.249020;
+    kick.S1.02: MARKER,      AT=14.652020;
+    Q5.S1.02:   TQ5.S1.02,   AT=15.077520;
+    MCV.S1.03:  TMCV.S1.03,  AT=15.415020;
+    BPM.S1.05:  TBPM.S1.05,  AT=15.600020;
+    Q4.S1.02:   TQ4.S1.02,   AT=15.847520;
+  MBB.S1.03:    TMBB.S1.03,  AT=16.215025;
+  bend.S1.03:   Tbend.S1.02, AT=17.306525;
+  MBE.S1.03:    TMBE.S1.03,  AT=18.398025;
+    BPM.S1.06:  TBPM.S1.06,  AT=18.505030;
+    SV.S1.03:   TSV.S1.03,   AT=18.638030;
+    MCH.S1.06:  TMCH.S1.06,  AT=18.858040;
+    Q3.S1.02:   TQ3.S1.02,   AT=19.858030;
+    SH.S1.02:   TSH.S1.02,   AT=20.223030;
+    MCH.S1.07:  TMCH.S1.07,  AT=20.658030;
+    BPM.S1.07:  TBPM.S1.07,  AT=20.893030;
+    SV.S1.04:   TSV.S1.04,   AT=21.038030;
+  MBB.S1.04:    TMBB.S1.04,  AT=21.318035;
+  bend.S1.04:   Tbend.S1.04, AT=22.409535;
+  MBE.S1.04:    TMBE.S1.04,  AT=23.501035;
+    BPM.S1.08:  TBPM.S1.08,  AT=23.608040;
+    Q2.S1.02:   TQ2.S1.02,   AT=23.868540;
+    MCV.S1.04:  TMCV.S1.04,  AT=24.181040;
+   Q1.S1.02:    TQ1.S1.02,   AT=24.638540;
+    MCH.S1.08:  TMCH.S1.08,  AT=24.966040;
+!
+    S2.LSS.M:     TSS,       AT=27.600040;
+!
+    MCH.S2.01:  TMCH.S2.01,  AT=29.308040;
+    kick.S2.03: MARKER,      AT=30.136040;
+    Q1.S2.01:   TQ1.S2.01,   AT=30.561540;
+    MCV.S2.01:  TMCV.S2.01,  AT=30.899040;
+    BPM.S2.01:  TBPM.S2.01,  AT=31.084040;
+    Q2.S2.01:   TQ2.S2.01,   AT=31.331540;
+  MBB.S2.01:    TMBB.S2.01,  AT=31.699045;
+  bend.S2.01:   Tbend.S2.01, AT=32.790545;
+  MBE.S2.01:    TMBE.S2.01,  AT=33.882045;
+    BPM.S2.02:  TBPM.S2.02,  AT=33.989050;
+    SV.S2.01:   TSV.S2.01,   AT=34.122050;
+    MCH.S2.02:  TMCH.S2.02,  AT=34.342060;
+    Q3.S2.01:   TQ3.S2.01,   AT=35.342050;
+    SH.S2.01:   TSH.S2.01,   AT=35.707050;
+    MCH.S2.03:  TMCH.S2.03,  AT=36.142050;
+    BPM.S2.03:  TBPM.S2.03,  AT=36.377050;
+    SV.S2.02:   TSV.S2.02,   AT=36.522050;
+  MBB.S2.02:    TMBB.S2.02,  AT=36.802055;
+  bend.S2.02:   Tbend.S2.02, AT=37.893555;
+  MBE.S2.02:    TMBE.S2.02,  AT=38.985055;
+    Q4.S2.01:   TQ4.S2.01,   AT=39.352560;
+    MCV.S2.02:  TMCV.S2.02,  AT=39.665060;
+    Q5.S2.01:   TQ5.S2.01,   AT=40.122560;
+    MCH.S2.04:  TMCH.S2.04,  AT=40.415060;
+!
+    CRF.S2.01:  TCRF.S2.01,  AT=40.990320;
+!
+    S2.SSS.M:   TSS,         AT=41.400060;
+!
+    CRF.S2.02:  TCRF.S2.02,  AT=41.89032;
+!
+    Q5.S2.02:   TQ5.S2.02,   AT=42.677560;
+    MCV.S2.03:  TMCV.S2.03,  AT=43.015060;
+    BPM.S2.05:  TBPM.S2.05,  AT=43.200060;
+    Q4.S2.02:   TQ4.S2.02,   AT=43.447560;
+  MBB.S2.03:    TMBB.S2.03,  AT=43.815065;
+  bend.S2.03:   Tbend.S2.02, AT=44.906565;
+  MBE.S2.03:    TMBE.S2.03,  AT=45.998065;
+    BPM.S2.06:  TBPM.S2.06,  AT=46.105070;
+    SV.S2.03:   TSV.S2.03,   AT=46.238070;
+    MCH.S2.06:  TMCH.S2.06,  AT=46.458080;
+    Q3.S2.02:   TQ3.S2.02,   AT=47.458070;
+    SH.S2.02:   TSH.S2.02,   AT=47.823070;
+    MCH.S2.07:  TMCH.S2.07,  AT=48.258070;
+    BPM.S2.07:  TBPM.S2.07,  AT=48.493070;
+    SV.S2.04:   TSV.S2.04,   AT=48.638070;
+  MBB.S2.04:    TMBB.S2.04,  AT=48.918075;
+  bend.S2.04:   Tbend.S2.04, AT=50.009575;
+  MBE.S2.04:    TMBE.S2.04,  AT=51.101075;
+    BPM.S2.08:  TBPM.S2.08,  AT=51.208080;
+    Q2.S2.02:   TQ2.S2.02,   AT=51.468580;
+    MCV.S2.04:  TMCV.S2.04,  AT=51.781080;
+    Q1.S2.02:   TQ1.S2.02,   AT=52.238580;
+    MCH.S2.08:  TMCH.S2.08,  AT=52.566080;
+!
+    S3.LSS.M:   TSS,         AT=55.20008;
+!
+    MCH.S3.01:  TMCH.S3.01,  AT=56.908080;
+    Q1.S3.01:   TQ1.S3.01,   AT=58.161580;
+    MCV.S3.01:  TMCV.S3.01,  AT=58.499080;
+    BPM.S3.01:  TBPM.S3.01,  AT=58.684080;
+    Q2.S3.01:   TQ2.S3.01,   AT=58.931580;
+  MBB.S3.01:    TMBB.S3.01,  AT=59.299085;
+  bend.S3.01:   Tbend.S3.01, AT=60.390585;
+  MBE.S3.01:    TMBE.S3.01,  AT=61.482085;
+    BPM.S3.02:  TBPM.S3.02,  AT=61.589090;
+    SV.S3.01:   TSV.S3.01,   AT=61.722090;
+    MCH.S3.02:  TMCH.S3.02,  AT=61.942100;
+    Q3.S3.01:   TQ3.S3.01,   AT=62.942090;
+    SH.S3.01:   TSH.S3.01,   AT=63.307090;
+    MCH.S3.03:  TMCH.S3.03,  AT=63.742090;
+    BPM.S3.03:  TBPM.S3.03,  AT=63.977090;
+    SV.S3.02:   TSV.S3.02,   AT=64.122090;
+  MBB.S3.02:    TMBB.S3.02,  AT=64.402095;
+  bend.S3.02:   Tbend.S3.02, AT=65.493595;
+  MBE.S3.02:    TMBE.S3.02,  AT=66.585095;
+    BPM.S3.04:  TBPM.S3.04,  AT=66.692100;
+    Q4.S3.01:   TQ4.S3.01,   AT=66.952600;
+    MCV.S3.02:  TMCV.S3.02,  AT=67.265100;
+    Q5.S3.01:   TQ5.S3.01,   AT=67.722600;
+   MCH.S3.04:   TMCH.S3.04,  AT=68.050100;
+!
+    S3.SSS.M:   TSS,         AT=69.000100;
+!
+    Q5.S3.02:   TQ5.S3.02,   AT=70.277600;
+    MCV.S3.03:  TMCV.S3.03,  AT=70.615100;
+    BPM.S3.05:  TBPM.S3.05,  AT=70.800100;
+    Q4.S3.02:   TQ4.S3.02,   AT=71.047600;
+  MBB.S3.03:    TMBB.S3.03,  AT=71.415105;
+  bend.S3.03:   Tbend.S3.02, AT=72.506605;
+  MBE.S3.03:    TMBE.S3.03,  AT=73.598105;
+    BPM.S3.06:  TBPM.S3.06,  AT=73.705110;
+    SV.S3.03:   TSV.S3.03,   AT=73.838110;
+    MCH.S3.06:  TMCH.S3.06,  AT=74.058120;
+    Q3.S3.02:   TQ3.S3.02,   AT=75.058110;
+    SH.S3.02:   TSH.S3.02,   AT=75.423110;
+    MCH.S3.07:  TMCH.S3.07,  AT=75.858110;
+    BPM.S3.07:  TBPM.S3.07,  AT=76.093110;
+    SV.S3.04:   TSV.S3.04,   AT=76.238110;
+  MBB.S3.04:    TMBB.S3.04,  AT=76.518115;
+  bend.S3.04:   Tbend.S3.04, AT=77.609615;
+  MBE.S3.04:    TMBE.S3.04,  AT=78.701115;
+    BPM.S3.08:  TBPM.S3.08,  AT=78.808120;
+    Q2.S3.02:   TQ2.S3.02,   AT=79.068620;
+    MCV.S3.04:  TMCV.S3.04,  AT=79.381120;
+    Q1.S3.02:   TQ1.S3.02,   AT=79.838620;
+    MCH.S3.08:  TMCH.S3.08,  AT=80.166120;
+!
+    S4.LSS.M:   TSS,         AT=82.800120;
+!
+    MCH.S4.01:  TMCH.S4.01,  AT=84.508120;
+    Q1.S4.01:   TQ1.S4.01,   AT=85.761620;
+    MCV.S4.01:  TMCV.S4.01,  AT=86.099120;
+    BPM.S4.01:  TBPM.S4.01,  AT=86.284120;
+    Q2.S4.01:   TQ2.S4.01,   AT=86.531620;
+  MBB.S4.01:    TMBB.S4.01,  AT=86.899125;
+  bend.S4.01:   Tbend.S4.01, AT=87.990625;
+  MBE.S4.01:    TMBE.S4.01,  AT=89.082125;
+    SV.S4.01:   TSV.S4.01,   AT=89.322130;
+    MCH.S4.02:  TMCH.S4.02,  AT=89.542140;
+    Q3.S4.01:   TQ3.S4.01,   AT=90.542130;
+    SH.S4.01:   TSH.S4.01,   AT=90.907130;
+    MCH.S4.03:  TMCH.S4.03,  AT=91.342130;
+    BPM.S4.03:  TBPM.S4.03,  AT=91.577130;
+    SV.S4.02:   TSV.S4.02,   AT=91.722130;
+  MBB.S4.02:    TMBB.S4.02,  AT=92.002135;
+  bend.S4.02:   Tbend.S4.02, AT=93.093635;
+  MBE.S4.02:    TMBE.S4.02,  AT=94.185135;
+    BPM.S4.04:  TBPM.S4.04,  AT=94.292140;
+    Q4.S4.01:   TQ4.S4.01,   AT=94.552640;
+    MCV.S4.02:  TMCV.S4.02,  AT=94.865140;
+    Q5.S4.01:   TQ5.S4.01,   AT=95.322640;
+    MCH.S4.04:  TMCH.S4.04,  AT=95.615140;
+!
+    CRF.S4.01:  TCRF.S4.01,  AT=96.190400;
+!
+    S4.SSS.M:   TSS,         AT=96.600140;
+!
+    CRF.S4.02:  TCRF.S4.02,  AT=97.090400;
+!
+    Q5.S4.02:   TQ5.S4.02,   AT=97.877640;
+    MCV.S4.03:  TMCV.S4.03,  AT=98.215140;
+    BPM.S4.05:  TBPM.S4.05,  AT=98.400140;
+    Q4.S4.02:   TQ4.S4.02,   AT=98.647640;
+  MBB.S4.03:    TMBB.S4.03,  AT=99.015145;
+  bend.S4.03:   Tbend.S4.02, AT=100.106645;
+  MBE.S4.03:    TMBE.S4.03,  AT=101.198145;
+    BPM.S4.06:  TBPM.S4.06,  AT=101.305150;
+    SV.S4.03:   TSV.S4.03,   AT=101.438150;
+    MCH.S4.06:  TMCH.S4.06,  AT=101.658160;
+    Q3.S4.02:   TQ3.S4.02,   AT=102.658150;
+    SH.S4.02:   TSH.S4.02,   AT=103.023150;
+    MCH.S4.07:  TMCH.S4.07,  AT=103.458150;
+    BPM.S4.07:  TBPM.S4.07,  AT=103.693150;
+    SV.S4.04:   TSV.S4.04,   AT=103.838150;
+  MBB.S4.04:    TMBB.S4.04,  AT=104.118155;
+  bend.S4.04:   Tbend.S4.04, AT=105.209655;
+  MBE.S4.04:    TMBE.S4.04,  AT=106.301155;
+    BPM.S4.08:  TBPM.S4.08,  AT=106.408160;
+    Q2.S4.02:   TQ2.S4.02,   AT=106.668660;
+    MCV.S4.04:  TMCV.S4.04,  AT=106.981160;
+    Q1.S4.02:   TQ1.S4.02,   AT=107.438660;
+    MCH.S4.08:  TMCH.S4.08,  AT=107.766160;
+!
+    S5.LSS.M:   TSS,         AT=110.400160;
+    STOP_KARA:  MARKER,      AT=110.400160;
+!
+endsequence;
+!
+! ===========================================================================
+!
+RETURN;

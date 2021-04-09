@@ -1,0 +1,89 @@
+mu=pi/2*0.968;
+L=64;
+beta_max:=L*(1+sin(mu/2.))/sin(mu);
+beta_min:=L*(1-sin(mu/2.))/sin(mu);
+alpha_max:=(-1-sin(mu/2.))/cos(mu/2.);
+alpha_min:=(1-sin(mu/2.))/cos(mu/2.);
+f_max:=L/(4*sin(mu/2.));
+f_min:=-L/(4*sin(mu/2.));
+D_max:=L*pi/(108.)*(1+0.5*sin(mu/2.))/(4*sin(mu/2)*sin(mu/2))*2;
+D_min:=L*pi/(108.)*(1-0.5*sin(mu/2.))/(4*sin(mu/2)*sin(mu/2))*2;
+Dpx_max = 0.05660608619;
+
+!value, mu, L, beta_max, beta_min, alpha_max, alpha_min, f_max, f_min, D_max, D_min;
+
+ksf     =                   1.63618409E-02   ;
+ksd     =                  -3.35683601E-02   ;
+
+QF: multipole, knl:={0,1./f_max};
+QD: multipole, knl:={0,1./f_min};
+DD: DRIFT, L:=L/8.;
+MBA: SBEND, L:=L/8., ANGLE=pi/108./2;
+MBB: SBEND, L:=L/8., ANGLE=pi/108./2;
+mm: MARKER;
+SF: multipole, knl:={0,0,ksf};
+SD: multipole, knl:={0,0,ksd};
+
+FODO: LINE =(QF,SF, DD, MBA,mm,MBB, DD, QD, SD,DD, MBA, mm,MBB, DD);
+SPSFODO: LINE =(108*(FODO));
+
+
+! PART II: a)-d)
+
+beam,  energy=26, particle=proton;
+use, sequence=SPSFODO;
+
+select, flag=twiss,column=name,s,betx,bety,alfx,alfy,dx,mux,muy,angle,k1l,k2l;
+select, flag=sectortab, column=name, pos, !k1, k2, k3, k4, k5, k6,
+										  r11, r12, r13, r14, r15, r16, 
+										  r21, r22, r23, r24, r25, r26,
+										  r31, r32, r33, r34, r35, r36,
+										  r41, r42, r43, r44, r45, r46,
+										  r51, r52, r53, r54, r55, r56,
+										  r61, r62, r63, r64, r65, r66;
+select, flag=sectormap, range=QF[1]/DD[4];
+
+twiss, deltap=0.00, file=SPS_fodo.twiss, sectormap, sectortable=sectortab, sectorfile=sps_sectormap;
+
+setplot, post=2, lwidth=5,lscale=1.2,rscale=1.5;
+PLOT,range=QF[1]/QF[8],HAXIS=s,VAXIS1=betx,bety,vaxis2=dx,colour=100, file=sps_plot;
+
+// value, beta_max, beta_min, D_max, D_min;
+// value, table(twiss, QF[1], betx), table(twiss,QD[1],betx), table(twiss,QF,dx), table(twiss,QD,dx);
+
+// twiss, deltap=0.00, betx=beta_max, bety=beta_min, alfx=alpha_max, alfy=alpha_min, DX=D_MAX, dpx=Dpx_max;
+// PLOT,range=QF[1]/QF[8],HAXIS=s,VAXIS1=betx,bety,vaxis2=dx,colour=100, file=sps_plot;
+
+// stop;
+
+
+! PART II: f)
+
+MBA->ANGLE=pi/2/8;
+MBB->ANGLE=pi/2/8;
+
+SPSFODOmini: LINE =(8*(FODO));
+use, sequence=SPSFODOmini;
+
+twiss, file=SPS_fodomini.twiss, deltap=0.00;
+PLOT,range=QF[1]/QF[8],HAXIS=s,VAXIS1=betx,bety,vaxis2=dx,colour=100;
+
+// match, sequence=SPSFODOmini;
+// 	global, dq1=0;
+// 	global, dq2=0;
+// 	vary, name=ksf;
+// 	vary, name=ksd;
+// 	lmdif, calls=20, tolerance=1.0e-15;
+// endmatch;
+
+// twiss;
+
+stop;
+
+
+
+
+
+
+
+

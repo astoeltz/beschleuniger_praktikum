@@ -1,0 +1,49 @@
+TITLE, s="KARA OPTICS";
+OPTION, -echo;
+
+// beam parameters
+e0 = 2.5;		// beam energy in GeV
+mepsx = 42E-9;	// hor. emittance
+mepsy = 0.3E-9;	// vert. emittance
+mepsl = 0.001;	// long. emittance
+mdpp  = 0.001;	// rel. energy spread
+msigt = 0.01;	// bunch length
+
+//the sequence definition
+CALL, file="KARA_lattice.seq";
+
+
+//this is the beam  
+BEAM, PARTICLE=electron, ENERGY:=e0, EX:=mepsx, EY:=mepsy, radiate;
+beam->ET   := mepsl;
+beam->SIGE := mdpp;
+beam->SIGT := msigt;
+// show, beam;
+
+//use this machine
+USE, sequence=KARA;
+
+// the RF voltage per cavity in MV
+VRFGLOB = 0.35;
+
+// define type and amount out output
+select, flag=twiss, clear;
+select, flag=twiss, column=name, s, x, betx, bety, dx, dy, alfx, alfy, dpx, dpy;
+
+// calculate the optics
+TWISS, deltap=0.0, save,sequence=KARA,file=kara.twiss, chrom;
+
+EMIT, deltap=0.0;
+show, beam;
+
+setplot, post=2, lwidth=5,lscale=1.2,rscale=1.5;
+
+// plot closed orbit
+PLOT,table=TWISS, HAXIS=s,VAXIS1=x,colour=100,interpolate=false, range=#s/#e, file=kara_plot;
+
+//plot twiss functions and x dispersion
+OPTION, -warn;
+PLOT,table=TWISS,HAXIS=s,VAXIS1=bety,betx,vaxis2=dx,colour=100,interpolate=true,range=S1.LSS.M/S2.LSS.M;
+OPTION, warn;
+
+stop;

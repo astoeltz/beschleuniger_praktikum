@@ -1,0 +1,19 @@
+D=5;
+f=5;
+qf: multipole, knl={0, 1/f};
+dr: drift, l=D;
+qd: multipole, knl={0, -1/f};
+sx: multipole, knl={0,0,3};
+
+fodo1: line=(qf, dr, qd,dr);
+ring: line=(sx,fodo1);
+
+beam, particle=electron, energy=1.3, sequence=ring;
+use, sequence=ring;
+
+track, onepass, dump, deltap=0.001;
+start, x=3e-3,px=0,y=3e-3, py=0;
+run, turns=1000;
+endtrack;
+plot, table=track, haxis=x, vaxis=px, particle=1, colour=1000, multiple, symbol=3, file=turns1000d5f5sx3front;
+plot, table=track, haxis=y, vaxis=py, particle=1, colour=1000, multiple, symbol=3, file=turns1000d5f5sx3front;
