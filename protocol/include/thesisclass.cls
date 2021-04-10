@@ -367,7 +367,7 @@
     \pagestyle{fancy}
     \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ %
                                              \thechapter.\ ##1}{}}
-    \lhead[\thepage]{\leftmark}\chead[]{}\rhead[\thesispagehead]{\thepage}
+    \lhead[\thepage]{\leftmark}\chead[]{}
     \lfoot{}\cfoot{}\rfoot{}
 }
 

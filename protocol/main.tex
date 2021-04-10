@@ -22,19 +22,12 @@
 % english or ngerman (new german für neue deutsche Rechtschreibung statt german)
 \SelectLanguage{english}
 % details on this thesis
-\newcommand{\thesisauthor}{Klara Fall}
-\newcommand{\thesistopic}{Name des Themas auf Deutsch}
-\newcommand{\thesisentopic}{Name of the Topic in English}
-\newcommand{\thesislongtopic}{Very long and very detailed description of the very interesting thesis topic (only necessary for pdfsubject tag).}
-\newcommand{\thesisinstitute}{Institut für Experimentelle Kernphysik}
-\newcommand{\thesisreviewerone}{Prof. Dr. D. Cay}
-\newcommand{\thesisreviewertwo}{Prof. Dr. E. Vil}
-\newcommand{\thesisadvisorone}{} % to use: enter names and uncomment in titlepg
-\newcommand{\thesisadvisortwo}{}
-\newcommand{\thesistimestart}{01.04.2015} % on titlepage
-\newcommand{\thesistimeend}{30.09.2015} % on titlepage
-\newcommand{\thesistimehandin}{30.09.2015} % on second page 'preamble'
-\newcommand{\thesispagehead}{Bachelor Thesis: \thesisentopic} % page heading
+\newcommand{\thesisauthor}{Anke Stöltzel}
+\newcommand{\thesistopic}{Praktikum zur Beschleunigerphysik}
+%\newcommand{\thesisentopic}{Name of the Topic in English}
+
+%\newcommand{\thesisinstitute}{Institut für Experimentelle Kernphysik}
+\newcommand{\thesistimestart}{08/09.04.2021} % on titlepage
 
 
 
@@ -48,9 +41,8 @@
 \hypersetup
 {
     pdfauthor={\thesisauthor},
-    pdftitle={Bachelorarbeit: \thesistopic},
-    pdfsubject={\thesislongtopic},
-    pdfkeywords={kit,physik,bachelor,thesis,\thesisauthor}
+    pdftitle={Protokoll: \thesistopic},
+    pdfkeywords={kit,physik,\thesisauthor}
 }
 
 
@@ -93,7 +85,6 @@
     \FrontMatter
 
     \input{include/titlepage}
-    \input{include/preamble}
 
     \begingroup \let\clearpage\relax    % in order to avoid listoffigures and
     \tableofcontents                    % listoftables on new pages
@@ -107,12 +98,11 @@
     % Contents
     \MainMatter
 
-    \chapter{Introduction}
+    \chapter{Computer exercises}
     \input{./chap/chapter1.tex}
-    \chapter{Theoretical Background}
+    \chapter{Experiments with beam}
     \input{./chap/chapter2.tex}
-    \chapter{Experimental Investigations}
-    \input{./chap/chapter3.tex}
+
 
     \emptychapter[3]{ROOT Routines}     % usage: \emptychapter[page displayed 
                                         %        in toc]{name of the chapter}
