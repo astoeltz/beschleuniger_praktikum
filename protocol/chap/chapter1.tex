@@ -29,12 +29,33 @@ endtrack;
 plot, table=track, haxis=x, vaxis=px, particle=1, colour=1000, multiple, symbol=3, file=turns100d1f1;
 plot, table=track, haxis=y, vaxis=py, particle=1, colour=1000, multiple, symbol=3, file=turns100d1f1;
 \end{lstlisting}
-Figure \ref{fig:ellipse} shows the phase space ellipse of $x$ and $y$ for $D=f=1$, a stable motion.
+
+Figure \ref{fig:ellipse} shows the phase space ellipses of the one defined electron for $x$ and $y$ sub-spaces for $D=f=1$, which results in a stable motion.
+
 \begin{figure}
     \centering
-    \includegraphics{}
-    \caption{Caption}
-    \label{fig:my_label}
+    \begin{minipage}{0.49\textwidth}
+        \includegraphics[width=\textwidth]{../../part1/d1f1_x.png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../part1/d1f1_y.png}
+    \end{minipage}
+    \caption{Phase space ellipses for $D=f=1$}
+    \label{fig:ellipse}
 \end{figure}
 
 Whether a FODO cell is leading to a stable path can be seen from the stability criterion $|D/(2\cdot f)|<1$.
+If this inequality is violated, the particle will be lost as can be seen in figure \ref{fig:unstable}
+\begin{figure}
+    \centering
+    \begin{minipage}{0.49\textwidth}
+        \includegraphics[width=\textwidth]{../../part1/d1f1_x.png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../part1/d1f1_y.png}
+    \end{minipage}
+    \caption{Phase space ellipses for $D=f=1$}
+    \label{fig:ellipse}
+\end{figure}
