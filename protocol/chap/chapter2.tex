@@ -16,10 +16,57 @@ The energy ramp...
 
 %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 \section{Part V - Network analyzer}
-In this part a network analyzer is used to determine the properties of different devices.
+In this part a network analyzer is used to determine the properties of different devices.\\
+For that it first has to be calibrated. According to the Open-Short-Load procedure both ports of the network analyzer are connected to the 'open' and then to the 'short' termination standards for calibration and a measurement is performed. In the first case, an open port, the signal will be fully reflected. For the short-circuited case the also fully reflected signal will have a $\pi$ phase shift.
 \par
-For two different coaxial cables, RG58 and RG59, the attenuation and reflection  for $50-1500\,\mathrm{MHz}$ are investigated.
-The first one, RG58, has a characteristic impedance of $Z=\sqrt{\frac{L}{C}}=50\,\mathrm{\Omega}$
-The reflection coefficient is $r=\left|\frac{\text{Reflected power}}{\text{Incident power}}\right|$ and thus the return loss is $10\cdot\log(r)$ in dB. Analogously for the transmission coefficient $t=\left|\frac{\text{Transmitted power}}{\text{Incident power}}\right|$.
+Following, for two different coaxial cables, RG58 and RG59, with characteristic impedances of $Z=\sqrt{\frac{L}{C}}=50\,\mathrm{\Omega}$ and $75\,\mathrm{\Omega}$ respectively, the attenuation and reflection  for $50$ to $1500\,\mathrm{MHz}$ are investigated.
+The reflection coefficient is $r=\left|\frac{\text{Reflected power}}{\text{Incident power}}\right|$ and thus the return loss is $10\cdot\log(r)$ in dB. Analogously for the transmission coefficient $t=\left|\frac{\text{Transmitted power}}{\text{Incident power}}\right|$.\\
+Figures \ref{fig:refl} and \ref{fig:trans} show the reflection and attenuation for both cables.
+\begin{figure}[tbp]
+\begin{minipage}{0.49\textwidth}
+        \centering
+        \includegraphics[width=1.1\linewidth]{../../part5/reflection.pdf}
+        \caption{Reflection of RG58 and 59}
+        \label{fig:refl}
+    \end{minipage}\hfill
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \includegraphics[width=1.1\linewidth]{../../part5/transmission.pdf}
+        \caption{Attenuation of RG58 and 59}
+        \label{fig:trans}
+    \end{minipage}
+\end{figure}
+For both cables the transmission decreases for higher frequencies. The reflection is rather stable for the RG59 while it increases for the RG48 with higher frequencies.\\
+Comparing the amplitudes of the signals, the RG58 has a higher transmission and but also higher reflection as the RG59, which is due to the lower wave impedance of the RG58.
+\par
+A further investigated device is a \textit{circulator} with a frequency range of $300$ to $450\,\mathrm{MHz}$. It has 3 ports and on all of them as well as between each pair the transmission and reflections will be determined. Thus for this device with 3 ports, the S-matrix has the dimensions $3\times3$:
+$$S_{\mathrm{Circulator}}=\begin{pmatrix}-20.8&-20.5&-0.81\\-0.80&-21.4&-18.6\\-19.0&-0.79&-22.9\end{pmatrix}\,.$$
+This matrix shows that the the incoming power can be transmitted almost without attenuation fro port 1 to 2, 2 to 3 and 3 to 1. It thus passed around to in a 'circle'. All other connections and directions are strongly ($\sim -20\,\mathrm{dB}$) attenuated.\\
+When performing this measurement it is necessary to properly terminate the ports not connected to the network analyzer. Otherwise there will be reflection on the open ports interfering with the measurement as they are not suppressed at least in one direction. Without the termination there is significant transmission also in the other direction of the circle.\\
+Input can be any of the ports while the following port in the circel should then serve as an output.\\
+Circulators are for example used to connect a klystron to the RF-cavity to feed it with the high-frequency signal. A circulator protects in this case the klystron from the power reflected back from the cavity.
+\par
+As a last device a \textit{directional coupler} is characterised. It also has 3 ports and its S-matrix has the following form:
+$$S_{\mathrm{dir.\,coupler}}=\begin{pmatrix}-29.0&-0.08&-30.0\\-0.08&-34.0&-55.0\\-30.1&-55.0&-23.0\end{pmatrix}\,.$$
+From the matrix one can deduce that a directional coupler transmits in both direction from port 1 (the input port) to 2 (the transmitted port) and back ($-0.08\,\mathrm{dB}$). 
+The third port, the coupled port, can be used as a port to connect a measurement device, which only receives a by 30\,dB attenuated signal from the input and is thus protected from the main power to be transmitted. 
 %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 \section{Part VI - Cavity}
+Finally a pillbox-like cavity will be analysed. With different cavity designs the bandwidth, coupling of the waves to the particles and central frequency can vary.\\
+The setup consist of the cylindrical cavity (outer diameter $d=100.75\,\mathrm{mm}$, length $l=69.69\,\mathrm{mm}$ and a material thickness of $4\,\mathrm{mm}$) with a hole on each side with a fishing line passing through the cavity. The line can be moved with a small stepper motor so that a dielectric bead threaded on this line can be pulled through the cavity with a certain step size and total distance.\\
+The cavity also has two screws which can be screwed into the lateral surface to change its geometry and thus the cavity's resonance frequency.
+\par
+With the aid of a network analyzer and the connected LabView
+program the reflection coefficient is measured and the resonance frequency $f_0$ and quality factor $Q=f_0/B$ are determined. 
+The cavity will reflect the incident power back as long as the frequency is not hitting the resonance. 
+In case of the incident signal having the cavity's resonance frequency, the power will be absorbed into the cavity.\\
+$B=f_2-f_1$ is the bandwidth where $f_2$ and $f_1$ are the upper and lower $-3\,\mathrm{dB}$ cutoff frequency (half-power point) respectively.
+These are $$f_2=2.741100\,\mathrm{GHz}\text{ and }f_1=2.739573\,\mathrm{GHz}\,$$
+and so $$B=1.527\,\mathrm{MHz}\,.$$
+As the resonance peak is not symmetrical around the maximum the geometric mean rather than the arithmetic mean of the cutoff frequencies is used to calculate the resonance frequency. It becomes $$f_0=2.740336\,\mathrm{GHz}$$
+and so the quality factor is
+$$Q=1794.59\,.$$
+\par
+The electrical field inside the cavity is measured with the help of the differently sized dielectric beads pulled through the cavity on the fishing thread.\\
+Due to the bead the resonance frequency changes and the change is related to the electrical field at a certain position $z$ over
+$$E(z)\propto\sqrt{\frac{\Delta f_0(z)}{f_0}\cdot\frac{1}{V_{\text{bead}}}}\,.$$
