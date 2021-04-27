@@ -42,8 +42,8 @@
 @ SYNCH_5          %le                   0
 @ TITLE            %08s "no-title"
 @ ORIGIN           %16s "5.06.01 Linux 64"
-@ DATE             %08s "08/04/21"
-@ TIME             %08s "12.19.45"
+@ DATE             %08s "23/04/21"
+@ TIME             %08s "09.11.02"
 * NAME                                S               BETX               BETY               ALFX               ALFY                 DX                MUX                MUY              ANGLE                K1L                K2L 
 $ %s                                %le                %le                %le                %le                %le                %le                %le                %le                %le                %le                %le 
  "SPSFODO$START"                      0        108.1126762        19.92187846       -2.328185563        0.429013798        2.628585781                  0                  0                  0                  0                  0
